@@ -1,7 +1,7 @@
-FROM caddy:latest AS builder
+FROM caddy:2.9.1-builder-alpine AS builder
 
-RUN xcaddy build --with github.com/caddy-dns/cloudflare 
+RUN xcaddy build --with github.com/caddy-dns/cloudflare
 
-FROM caddy:latest
+FROM caddy:2.9.1-alpine
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
